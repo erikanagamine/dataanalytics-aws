@@ -36,4 +36,42 @@ ls
 
 tail -f /var/log/aws-kinesis-agent/aws-kinesis-agent.log 
 
+
+```
+Firehose:
+
+```
+cd /etc/aws-kinesis/
+
+sudo vi agent.json 
+
+[ec2-user@ip-172-31-18-110 aws-kinesis]$ cat agent.json 
+{
+  "cloudwatch.emitMetrics": true,
+  "kinesis.endpoint": "kinesis.us-west-2.amazonaws.com",
+  "firehose.endpoint": "firehose.us-west-2.amazonaws.com",
+  
+  "awsAccessKeyId": "",
+  "awsSecretAccessKey": "",
+
+  "flows": [
+    {
+      "filePattern": "/var/log/cadabra/*.log",
+      "kinesisStream": "CadabraOrders",
+      "partitionKeyOption": "RANDOM",
+      "dataProcessingOptions": [
+        {
+  "optionName": "CSVTOJSON",
+  "customFieldNames": ["InvoiceNo", "StockCode", "Description", "Quantity", "InvoiceDate", "UnitPrice", "Customer", "Country"]
+}
+      ]
+    },
+    {
+      "filePattern": "/var/log/cadabra/*.log",
+      "deliveryStream": "PurchaseLogs"
+    }
+  ]
+
+sudo service aws-kinesis-agent restart
+
 ```
