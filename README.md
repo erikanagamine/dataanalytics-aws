@@ -75,3 +75,12 @@ sudo vi agent.json
 sudo service aws-kinesis-agent restart
 
 ```
+
+EMR:
+
+```
+Conectar no  EMR
+cp /usr/lib/spark/examples/src/main/python/ml/als_example.py ./
+
+
+```
