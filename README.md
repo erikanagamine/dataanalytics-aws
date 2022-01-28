@@ -88,4 +88,14 @@ hadoop fs -copyFromLocal /usr/lib/spark/data/mllib/als/sample_movielens_ratings.
 
 spark-submit als_example.py
 
+Edit als_example to give more detailed results:
+if __name__ == "__main__":
+    spark = SparkSession\
+        .builder\
+        .appName("ALSExample")\
+        .getOrCreate()
+##include this
+    spark.sparkContext.setLogLevel("ERROR")
+    
+
 ```
