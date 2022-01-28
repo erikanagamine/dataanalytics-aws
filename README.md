@@ -82,7 +82,7 @@ EMR:
 Conectar no  EMR:
 cp /usr/lib/spark/examples/src/main/python/ml/als_example.py ./
 
-hadoop fs -mkdir -p /user/hadoop/mllib/als
+hadoop fs -mkdir -p /user/hadoop/data/mllib/als
 
 hadoop fs -copyFromLocal /usr/lib/spark/data/mllib/als/sample_movielens_ratings.txt /user/hadoop/data/mllib/als/sample_movielens_ratings.txt
 
